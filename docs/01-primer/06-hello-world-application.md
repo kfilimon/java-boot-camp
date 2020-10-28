@@ -226,7 +226,7 @@ Gradle tasks add functionality to Gradle.  Dependencies add functionality to the
    no main manifest attribute, in build/libs/demo.jar
    ```
 
-   This JAR is not yet an executable JAR.  The `MANIFEST.MF` is missing the `Main-Class` attribute.  Java does not know where to go and which class to execute.  Note that a project may contain hundreds if not thousands to classes.  Java will look into the `MANIFEST.MF` for the `Main-Class` attribute and will execute that.
+   This JAR is not yet an executable JAR.  The `MANIFEST.MF` is missing the `Main-Class` attribute.  Java does not know where to go and which class to execute.  Note that a project may contain hundreds if not thousands classes.  Java will look into the `MANIFEST.MF` for the `Main-Class` attribute and will execute that.
 
 1. Configure the `jar` task
 

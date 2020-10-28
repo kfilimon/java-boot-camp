@@ -59,7 +59,7 @@ Docker provides more than just the correct configuration.
 
 1. **Limited Access**
 
-   Consider the case where two or more applications are running on the same OS.  One of the applications may be able (intentionally or unintentionally) be able to access files saved by another application running on the same OS.
+   Consider the case where two or more applications are running on the same OS.  One of the applications may be able (intentionally or unintentionally) to access files saved by another application running on the same OS.
 
    Someone needs to make sure that an application does not access resources that belong to another application.
 
@@ -366,7 +366,7 @@ Docker provides more than just the correct configuration.
 
    The `alpine:3.11` does not depend on anything (as indicated by the [`FROM scratch` instruction]( https://docs.docker.com/develop/develop-images/baseimages/)) and is referred to as base image.
 
-   If we want to create a docker image from scratch, we need to merge both docker images, and the files they are referring to, into our docker file.  Note that this is necessary in our case, and will simply extend an existing image.
+   If we want to create a docker image from scratch, we need to merge both docker images, and the files they are referring to, into our docker file.  Note that this is not necessary in our case, and we will simply extend an existing image.
 
    **Steps**:
 
@@ -596,7 +596,7 @@ CMD ["java", "-jar", "application.jar"]
 
 The docker file depends on the JAR file to be generated before it runs.  Docker can be used to first build the executable JAR and then creates the image.
 
-For docker to be able to build the application it now needs the source code and any other artefacts required to run `./gradlew build`.  We can copy all files, but that's considered as bad practice as ideally docker build a clean image and should not reuse anything else but the source files from our local filesystem.  **Docker should be able to build the image by simply checking out the source from the repository and the execute `docker build`**.
+For docker to be able to build the application it now needs the source code and any other artefacts required to run `./gradlew build`.  We can copy all files, but that's considered as bad practice as ideally docker build a clean image and should not reuse anything else but the source files from our local filesystem.  **Docker should be able to build the image by simply checking out the source from the repository and then execute `docker build`**.
 
 We have two options to selectively copy the files required by the `./gradlew build` to successfully run.
 
@@ -709,7 +709,7 @@ Consider the following:
 1. What happens if our application experiences more load and new instances need to be started?
 1. How will we reduce the number of instances running when our application is not being used?
 1. How will we deploy new versions of our application?
-1. Can we have red/green deployments?
+1. Can we have blue/green deployments?
 1. How will we monitor our application?
 1. How can we access the logs of our application?
 
